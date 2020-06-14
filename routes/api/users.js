@@ -5,6 +5,7 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+
 const User = require('./../../models/User');
 
 //  @route Post api/users @desc Register user @access PUBLIC
@@ -30,12 +31,13 @@ async (req, res) => {
     const {name, email, password} = req.body;
 
     try{
-    // See if user Exists
+        // See if user Exists
         let user = await User.findOne({email});
         if(user){
             return res.status(400).json({errors: [{msg:"User already exists"}]})
         }
-    // See get User Gravatar
+    //  Create New User
+    // Get User Gravatar
         const avatar = gravatar.url(email, {
             s: '200',
             r: 'pg',
