@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 export default function Register() {
 
@@ -15,12 +16,30 @@ export default function Register() {
         });
     }
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
-        if(password !== password2){
+        if (password !== password2) {
             console.log('Password mismatch')
         } else {
-            console.log(formData);
+            // const newUser = {
+            //     name,
+            //     email,
+            //     password
+            // };
+
+            // try {
+            //     const config = {
+            //         headers:{
+            //             'Content-Type': 'application/json'
+            //         }
+            //     }
+            //     const body = JSON.stringify(newUser);
+            //     const res = await axios.post('/api/users', body, config);
+            //     console.log(res.data);
+            // } catch (error) {
+            //     console.log(error.response)
+            // }
+            console.log('Success');
         }
     }
 
@@ -48,7 +67,8 @@ export default function Register() {
                         value={email}
                         name="email"
                         required/>
-                    <small className="form-text">This site uses Gravatar so if you want a profile image, Please create an account in the Gravatar with same email</small>
+                    <small className="form-text">This site uses Gravatar so if you want a profile
+                        image, Please create an account in the Gravatar with same email</small>
                 </div>
                 <div className="form-group">
                     <input
