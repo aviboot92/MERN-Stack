@@ -24,8 +24,8 @@ router.get('/', auth, async(req, res) => {
 
 //  @route Post api/auth @desc Authenticate User & get Token @access PUBLIC
 router.post('/', [
-    check('email', 'Please include a valid eamil').isEmail(),
-    check('password', 'Password is required').exists()
+    check('email', 'Please include a valid email').isEmail(),
+    check('password', 'Please include a valid required').exists()
 ], async(req, res) => {
     // Check for validations and errors
     const errors = validationResult(req);
@@ -48,7 +48,7 @@ router.post('/', [
                 .json({
                     errors: [
                         {
-                            msg: "invalid credentials"
+                            msg: "Invalid Credentials"
                         }
                     ]
                 })
@@ -62,7 +62,7 @@ router.post('/', [
                 .json({
                     errors: [
                         {
-                            msg: "invalid credentials"
+                            msg: "Invalid Credentials"
                         }
                     ]
                 })
