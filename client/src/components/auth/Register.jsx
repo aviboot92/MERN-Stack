@@ -2,10 +2,11 @@ import React, {Fragment, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setAlert} from './../../actions/alert';
+import {register} from './../../actions/auth';
 import PropTypes from 'prop-types'
 
 
- const Register = (props) => {
+ const Register = ({setAlert, register}) => {
 
     const [formData,
         setFormData] = useState({name: '', email: '', password: '', password2: ''});
@@ -23,7 +24,7 @@ import PropTypes from 'prop-types'
         e.preventDefault();
         if (password !== password2) {
             // console.log('Password mismatch');
-            props.setAlert('Passwords mismatch', 'danger', 2000);
+            setAlert('Passwords mismatch', 'danger', 2000);
         } else {
             // const newUser = {
             //     name,
@@ -43,7 +44,7 @@ import PropTypes from 'prop-types'
             // } catch (error) {
             //     console.log(error.response)
             // }
-            console.log('Success');
+            register({name, email, password});
         }
     }
 
@@ -106,8 +107,9 @@ import PropTypes from 'prop-types'
 
 Register.propTypes= {
     setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = {setAlert}
+const mapDispatchToProps = {setAlert, register}
 
 export default connect(null, mapDispatchToProps)(Register)
