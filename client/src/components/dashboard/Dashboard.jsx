@@ -1,4 +1,5 @@
 import React, {useEffect, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getCurrentUserProfile} from './../../actions/profile';
@@ -25,7 +26,10 @@ return loading && profile === null
         <h1 className=" large text-primary">Dashboard</h1>
         <p className="lead"><FontAwesomeIcon icon={faUser}/>
             Welcome {user && user.name}</p>
-        {profile !== null ? (<Fragment>Profile Exists</Fragment>) : (<Fragment>No profile</Fragment>)}
+        {profile !== null ? (<Fragment>Profile Exists</Fragment>) : (<Fragment>
+            <p>You have not yet setup a profile, please add some info</p>
+            <Link to="/create-profile" className="btn btn-primary my-1">Create Profile</Link>
+        </Fragment>)}
     </Fragment>
 }
 
