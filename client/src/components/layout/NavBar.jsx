@@ -4,8 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {logout} from './../../actions/auth';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCoffee, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
-
+import {faCoffee, faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = ({
     auth: {
@@ -17,6 +16,10 @@ const NavBar = ({
 
     const authLinks = (
         <ul>
+            <li>
+                <Link to="/dashboard"><FontAwesomeIcon icon={faUser}/> <span className="hide-sm">Dashboard</span>
+                </Link>
+            </li>
             <li>
                 <a onClick={logout} href="#!">
                     <FontAwesomeIcon icon={faSignOutAlt}/>

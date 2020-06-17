@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link, Redirect} from 'react-router-dom';
 import {login} from './../../actions/auth';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faUser} from '@fortawesome/free-solid-svg-icons';
 
 const Login = ({login, isAuthenticated}) => {
 
@@ -30,10 +32,10 @@ const Login = ({login, isAuthenticated}) => {
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Sign Up</h1>
+            <h1 className="large text-primary">Sign In</h1>
             <p className="lead">
-                <i className="fas fa-user"></i>
-                Sign In</p>
+            <FontAwesomeIcon icon={faUser}/>
+               {`  `} Sign in to your account</p>
             <form className="form" onSubmit={onSubmit}>
                 <div className="form-group">
                     <input
