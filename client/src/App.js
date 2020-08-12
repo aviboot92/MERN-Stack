@@ -15,13 +15,10 @@ import store from './store';
 
 import './App.css';
 
-if(localStorage.token){
-    setAuthToken(localStorage.token);
-}
-
 const App = () => {
-
+    
     useEffect(() => {
+        setAuthToken(localStorage.token);
        store.dispatch(loadUser());
     }, [])
 
