@@ -6,7 +6,7 @@ const initialState = {
     profiles: [],
     repos: [],
     loading: true,
-    error: false
+    error: {}
 };
 
 export default function (state= initialState, action){
