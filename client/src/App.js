@@ -16,10 +16,11 @@ import store from './store';
 import './App.css';
 
 const App = () => {
-    
+    // It is very important to keep setAuthToken outside useEffect
+    const token = localStorage.token;
+    setAuthToken(token);
     useEffect(() => {
-        setAuthToken(localStorage.token);
-       store.dispatch(loadUser());
+        store.dispatch(loadUser());
     }, [])
 
     return (
