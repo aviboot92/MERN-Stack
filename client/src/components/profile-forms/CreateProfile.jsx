@@ -1,8 +1,11 @@
 import React, {Fragment, useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {createProfile} from './../../actions/profile';
+import {Link, withRouter} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
-
-const CreateProfile = (props) => {
+const CreateProfile = ({history}) => {
+    const dispatch = useDispatch();
     const [formData,
         setFormData] = useState({
         company: '',
@@ -41,6 +44,11 @@ const CreateProfile = (props) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
+    const onSubmit = e =>{
+        e.preventDefault();
+        dispatch(createProfile(formData , history))
+    }
+
     return (
         <Fragment>
             <h1 className="large text-primary">
@@ -51,7 +59,7 @@ const CreateProfile = (props) => {
                 Let's get some information to make your profile stand out
             </p>
             <small>* = required field</small>
-            <form className="form">
+            <form className="form" onSubmit= {onSubmit}>
                 <div className="form-group">
                     <select name="status" value={status} onChange={(e)=> onChange(e)}> 
                         <option value="0">* Select Professional Status</option>
@@ -132,4 +140,4 @@ const CreateProfile = (props) => {
     )
 }
 
-export default CreateProfile
+export default withRouter(CreateProfile);
